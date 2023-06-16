@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "215912594623",
+    "project_id": "messengy-b308b",
+    "storage_bucket": "messengy-b308b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215912594623:android:94571e974a25c0e207da0a",
+        "android_client_info": {
+          "package_name": "com.example.messengy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215912594623-eq4pfaj2jaur6qh0e4g97p5suqhb4sh0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_ads3u1fMsChnpxE6bPvsXCzZQ-KvuEY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "215912594623-eq4pfaj2jaur6qh0e4g97p5suqhb4sh0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
