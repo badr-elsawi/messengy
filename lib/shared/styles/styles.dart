@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 ThemeData darkTheme = ThemeData(
   useMaterial3: true,
@@ -13,6 +14,14 @@ ThemeData darkTheme = ThemeData(
     style: elevatedButtonStyle,
   ),
   snackBarTheme: snackBarTheme,
+  textTheme: TextTheme(
+    bodyMedium: bubbleText,
+  ),
+  bottomSheetTheme: BottomSheetThemeData(
+    backgroundColor: Colors.transparent,
+    elevation: 0,
+
+  )
 );
 
 class Values {
@@ -20,13 +29,14 @@ class Values {
 }
 
 InputDecorationTheme inputDecorationTheme = InputDecorationTheme(
-  hintStyle: TextStyle(color: Colors.white),
+  hintStyle: TextStyle(color: Colors.grey[300]),
   filled: true,
   fillColor: Color(0xff120818),
   prefixIconColor: Color(0xff281436),
   iconColor: Color(0xff281436),
   suffixIconColor: Color(0xff281436),
   hoverColor: Colors.red,
+  contentPadding: EdgeInsets.symmetric(horizontal: 20,vertical: 10,),
 
   // Borders **************************************************************
   focusedErrorBorder: OutlineInputBorder(
@@ -111,4 +121,9 @@ SnackBarThemeData snackBarTheme = SnackBarThemeData(
   actionTextColor: Color(0xffFAB400),
   behavior: SnackBarBehavior.floating,
   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+);
+
+TextStyle bubbleText = TextStyle(
+  color: Colors.white,
+  fontSize: 18.sp,
 );
