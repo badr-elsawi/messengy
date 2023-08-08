@@ -15,3 +15,5 @@ class CreateUserErrorState extends ChatStates {
 class LoginSuccessState extends ChatStates {}
 class LoginWrongPasswordState extends ChatStates {}
 class LoginNoUserState extends ChatStates {}
+// ***************************************************************
+class GetMessagesState extends ChatStates {}

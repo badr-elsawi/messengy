@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:messengy/cubit/chat_states.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:messengy/models/chat_model.dart';
 
 
 class ChatCubit extends Cubit<ChatStates> {
@@ -63,23 +64,26 @@ class ChatCubit extends Cubit<ChatStates> {
 
 // chat page **********************************************************
 
-  CollectionReference messeges = FirebaseFirestore.instance.collection('messeges');
+  CollectionReference messeges = FirebaseFirestore.instance.collection('messages');
   void sendMessege({
     required String messege,
     required String time,
 }){
     messeges.add({
-      'messege' : messege,
+      'message' : messege,
       'time' : time,
     });
   }
 
-  void getMesseges() async {
-    print('***********************************************');
-    print('***********************************************');
-    print(messeges.doc('DBBSfK9u7qmRgsLiWmXO').get().toString());
-    print('***********************************************');
-    print('***********************************************');
+  List<Chat> messagesList = [];
+  void getMesseges() {
+    messeges.orderBy('time',descending: true).snapshots().listen((event) {
+      for(var doc in event.docs){
+        messagesList.add(Chat.fromJson(doc));
+      }
+      print('Success **************************************');
+      emit(GetMessagesState());
+    });
   }
 
 // chat page **********************************************************
