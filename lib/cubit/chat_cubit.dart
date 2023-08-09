@@ -5,7 +5,6 @@ import 'package:messengy/cubit/chat_states.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:messengy/models/chat_model.dart';
 
-
 class ChatCubit extends Cubit<ChatStates> {
   ChatCubit() : super(ChatInitialState());
 
@@ -38,16 +37,13 @@ class ChatCubit extends Cubit<ChatStates> {
     }
   }
 
-  UserCredential? userLogin ;
-  void loginUser({
-    required String emailAddress,
-    required String password
-}) async {
+  UserCredential? userLogin;
+
+  void loginUser(
+      {required String emailAddress, required String password}) async {
     try {
-      userLogin = await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: emailAddress,
-          password: password
-      );
+      userLogin = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: emailAddress, password: password);
       emit(LoginSuccessState(emailAddress));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -59,33 +55,40 @@ class ChatCubit extends Cubit<ChatStates> {
       }
     }
   }
-// login and register *************************************************
 
+// login and register *************************************************
 
 // chat page **********************************************************
 
-  CollectionReference messeges = FirebaseFirestore.instance.collection('messages');
+  CollectionReference messagesRef =
+      FirebaseFirestore.instance.collection('messages');
+
   void sendMessege({
     required String messege,
+    required String userId,
     required String time,
-}){
-    messeges.add({
-      'message' : messege,
-      'time' : time,
+  }) {
+    messagesRef.add({
+      'message': messege,
+      'userId': userId,
+      'time': time,
+    }).then((value) {
+      getMesseges();
     });
   }
 
   List<Chat> messagesList = [];
   void getMesseges() {
-    messeges.orderBy('time',descending: true).snapshots().listen((event) {
-      for(var doc in event.docs){
-        messagesList.add(Chat.fromJson(doc));
-      }
-      print('Success **************************************');
-      emit(GetMessagesState());
-    });
+    messagesRef.orderBy('time', descending: true).snapshots().listen(
+          (event) {
+            messagesList.clear();
+            for(int i =0; i< event.docs.length ; i++){
+              messagesList.add(Chat.fromJson(event.docs[i]));
+            }
+            emit(GetMessagesState(messagesList));
+          },
+        );
   }
 
 // chat page **********************************************************
-
 }

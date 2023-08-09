@@ -6,6 +6,7 @@ import 'package:messengy/screens/chat_screen/chat_screen.dart';
 import 'package:messengy/screens/register_screen/register_screen.dart';
 import 'package:messengy/shared/components/snack_bar.dart';
 import 'package:messengy/shared/components/text_input.dart';
+import 'package:messengy/shared/local_services/local_service.dart';
 import 'package:page_transition/page_transition.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -25,6 +26,7 @@ class LoginScreen extends StatelessWidget {
               messege: 'Logged in successfully',
             ),
           );
+          CashService.putData(key: 'token', value: state.userId);
           Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ChatScreen(state.userId)));
         }
         if (state is LoginWrongPasswordState) {

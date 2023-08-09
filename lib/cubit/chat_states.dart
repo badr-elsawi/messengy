@@ -1,3 +1,5 @@
+import '../models/chat_model.dart';
+
 abstract class ChatStates {}
 class ChatInitialState extends ChatStates {}
 // ************************************************************
@@ -19,4 +21,7 @@ class LoginSuccessState extends ChatStates {
 class LoginWrongPasswordState extends ChatStates {}
 class LoginNoUserState extends ChatStates {}
 // ***************************************************************
-class GetMessagesState extends ChatStates {}
+class GetMessagesState extends ChatStates {
+  List<Chat> messagesList ;
+  GetMessagesState(this.messagesList);
+}

@@ -39,14 +39,22 @@ dependencies:
   flutter_bloc:
   line_icons: ^2.0.0
   page_transition: ^2.0.9
+  flutter_screenutil:
+  shared_preferences:
+  # firebase packages *****************
   firebase_core:
   firebase_auth:
-  flutter_screenutil:
   cloud_firestore:
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons:
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/icon.png"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
