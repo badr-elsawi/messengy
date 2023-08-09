@@ -29,7 +29,6 @@ class MyTextInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       maxLines: maxLines,
-
       minLines: 1,
       keyboardType: keyboardType,
       controller: controller,
@@ -41,7 +40,6 @@ class MyTextInput extends StatelessWidget {
         }
       },
       decoration: InputDecoration(
-
         hintText: hintText,
         prefixIcon: prefixIcon,
         suffixIcon: suffix,

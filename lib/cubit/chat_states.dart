@@ -12,7 +12,10 @@ class CreateUserErrorState extends ChatStates {
   CreateUserErrorState(String error);
 }
 // ***************************************************************
-class LoginSuccessState extends ChatStates {}
+class LoginSuccessState extends ChatStates {
+  late String userId ;
+  LoginSuccessState(this.userId);
+}
 class LoginWrongPasswordState extends ChatStates {}
 class LoginNoUserState extends ChatStates {}
 // ***************************************************************

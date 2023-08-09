@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
                 debugShowCheckedModeBanner: false,
                 title: 'messengy',
                 theme: darkTheme,
-                home: ChatScreen(),
+                home: LoginScreen(),
               );
             },
           );

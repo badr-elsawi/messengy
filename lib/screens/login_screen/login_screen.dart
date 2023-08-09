@@ -25,7 +25,7 @@ class LoginScreen extends StatelessWidget {
               messege: 'Logged in successfully',
             ),
           );
-          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ChatScreen()));
+          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ChatScreen(state.userId)));
         }
         if (state is LoginWrongPasswordState) {
           ScaffoldMessenger.of(context).showSnackBar(

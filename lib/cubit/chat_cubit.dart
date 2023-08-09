@@ -48,7 +48,7 @@ class ChatCubit extends Cubit<ChatStates> {
           email: emailAddress,
           password: password
       );
-      emit(LoginSuccessState());
+      emit(LoginSuccessState(emailAddress));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
